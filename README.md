@@ -1,5 +1,8 @@
 # 🟠🔵🔴 AniList - Streaming Hub
 
+[![Version](https://img.shields.io/badge/version-3.6-blue.svg)](https://github.com/Symswag/)
+[![Platform](https://img.shields.io/badge/platform-Anilist-blue.svg)](https://anilist.co/)
+
 A minimalist and robust UserScript for **AniList** that adds a dedicated "Where to watch?" section directly into the anime sidebar.
 
 It automatically detects if an anime is available on your favorite streaming platforms to display a direct launch button. If no direct link is found, it intelligently generates a search button based on the official title of the anime.
