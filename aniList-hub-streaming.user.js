@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         AniList - Streaming Hub
 // @namespace    http://tampermonkey.net/
-// @version      3.6
-// @description  Displays localized streaming platforms
+// @version      3.7
+// @description  Displays localized streaming platforms (Fix: Ignores internal AniList producer/studio links)
 // @author       Symswag
 // @match        https://anilist.co/anime/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=anilist.co
@@ -112,7 +112,11 @@
         if (document.getElementById('fr-streaming-platforms')) return;
 
         const encodedTitle = encodeURIComponent(animeTitle);
-        const allLinksInSidebar = Array.from(sidebar.querySelectorAll('a')).map(el => el.href.toLowerCase());
+        
+        // FIX: Extract links but strictly IGNORE internal AniList links (like /producer/ or anilist.co)
+        const allLinksInSidebar = Array.from(sidebar.querySelectorAll('a'))
+            .map(el => el.href.toLowerCase())
+            .filter(url => !url.includes('anilist.co/'));
 
         const container = document.createElement('div');
         container.id = 'fr-streaming-platforms';
